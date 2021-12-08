@@ -2,11 +2,12 @@ package example.tatyana.mysecondapplication
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.internal.NavigationMenuView
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var bottomNavigationMenu: NavigationMenuView
+    lateinit var bottomNavigationMenu: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,13 +15,13 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationMenu = findViewById(R.id.bottom_navigation_menu)
 
         bottomNavigationMenu.setOnItemSelectedListener { item ->
-            var fragment:Fragment? = null
-            when(item.itemId){
-                R.id.fragment_1->{
-                    fragment=FirstFragment()
+            var fragment: Fragment? = null
+            when (item.itemId) {
+                R.id.fragment_1 -> {
+                    fragment = FirstFragment()
                 }
-                R.id.fragment_2->{
-                    fragment=SecondFragment()
+                R.id.fragment_2 -> {
+                    fragment = SecondFragment()
                 }
             }
             replaceFragment(fragment!!)
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
     fun replaceFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
